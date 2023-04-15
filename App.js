@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {  Text, View, Image, TextInput } from 'react-native';
+import styles from './App.styles';
 
-export default function App() {
+
+
+
+const App = () => {
+const status = "ok"
   return (
-    <View style={styles.container}>
-      <Text>Open up your DuoLingo!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.root}>
+      <Text style={styles.title}>Which of these is the "glass'?</Text>
+
+      <View style={styles.optionsContainer}>
+        <View style={styles.optionContainer}>
+          <Image
+            style={styles.optionImage}
+            source={{
+              uri: "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/cup.png",
+            }}
+            resizeMode="contain"
+          />
+          <Text style={styles.optionText}>Glass</Text>
+        </View>
+ 
+      </View>
     </View>
   );
 }
+export default App;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#098A5A",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+
