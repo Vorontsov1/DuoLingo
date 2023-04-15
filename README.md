@@ -1,2 +1,2 @@
-notJustDeveloper`
+notJustDeveloper
 # DuoLingo
