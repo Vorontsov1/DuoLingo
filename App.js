@@ -8,6 +8,9 @@ import question from './assets/data/oneQuestionWithOption';
  
 const App = () => {
   const [selected, setSelected] = useState(null);
+  const onButtonPress = () => { 
+    console.warn('onButtonPress');
+  }
 
   return (
     <View style={styles.root}>
@@ -24,7 +27,7 @@ const App = () => {
           />
         ))}
       </View>
-      <Button />
+      <Button text="Check" onPress={onButtonPress} />
     </View>
   );
 }
