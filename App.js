@@ -3,8 +3,12 @@ import { Text, View, Alert } from "react-native";
 import styles from "./App.styles";
 import ImageOption from "./src/components/ImageOption/ImageOption";
 import Button from "./src/components/Button";
-import question from "./assets/data/imageMulatipleChoiceQuestions";
+// import question from "./assets/data/imageMulatipleChoiceQuestions";
+import question from "./assets/data/openEndedQuestions";
 import ImageMulitpleQuestion from "./src/components/ImageMulyipleQuestion/ImageMulitpleQuestion";
+import OpenEndedQuestion from "./src/components/OpenEndedQuension/OpenEndedQuestion";
+
+
 
 const App = () => {
   
@@ -33,7 +37,12 @@ const App = () => {
 
   return (
     <View style={styles.root}>
-      <ImageMulitpleQuestion
+      {/* <ImageMulitpleQuestion
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+      /> */}
+      <OpenEndedQuestion
         question={currentQuestion}
         onCorrect={onCorrect}
         onWrong={onWrong}

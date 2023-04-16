@@ -2,19 +2,19 @@ export default [
   {
     id: "q5",
     type: "OPEN_ENDED",
-    text: "Yo soy un hombre",
+    text: "я чоловік",
     answer: "I am a man",
   },
   {
     id: "q5",
     type: "OPEN_ENDED",
-    text: "La mujer",
-    answer: "the woman",
+    text: "я жінка",
+    answer: "i am a woman",
   },
   {
     id: "q5",
     type: "OPEN_ENDED",
-    text: "Me gusta React Native",
+    text: "я люблю React Native",
     answer: "I like react native",
   },
 ];
