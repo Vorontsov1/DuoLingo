@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, Alert } from "react-native";
 import styles from "./App.styles";
+import ImageMultipleQuestion from "./src/components/ImageMultipleQuestion/ImageMultipleQuestion";
+import OpenEndedQuestion from "./src/components/OpenEndedQuestion/OpenEndedQuestion";
 import ImageOption from "./src/components/ImageOption/ImageOption";
 import Button from "./src/components/Button";
 // import question from "./assets/data/imageMulatipleChoiceQuestions";
 // import question from "./assets/data/openEndedQuestions";
 import question from './assets/data/allQuestions';
-import ImageMulitpleQuestion from "./src/components/ImageMulyipleQuestion/ImageMulitpleQuestion";
-import OpenEndedQuestion from "./src/components/OpenEndedQuension/OpenEndedQuestion";
+
 
 
 
@@ -38,20 +39,17 @@ const App = () => {
 
   return (
     <View style={styles.root}>
-      {currentQuestion.type === "IMAGE_MULTIPLE_CHOICE" && (
-        <ImageMulitpleQuestion
-          question={currentQuestion}
-          onCorrect={onCorrect}
-          onWrong={onWrong}
-        />
-      )}
-      {currentQuestion.type === "OPEN_ENDED" ? (
-        <OpenEndedQuestion
-          question={currentQuestion}
-          onCorrect={onCorrect}
-          onWrong={onWrong}
-        />
-      ) : null}
+      <ImageMultipleQuestion
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+      />
+
+      <OpenEndedQuestion
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+      />
     </View>
   );
 };

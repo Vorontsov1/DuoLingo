@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TextInput, Image } from 'react-native';
 import styles from './styles';
-import Button from '../../components/Button';
+import Button from '../Button';
 import mascot from '../../../assets/images/mascot.png';
 
 

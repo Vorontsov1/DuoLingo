@@ -5,7 +5,7 @@ import ImageOption from "../ImageOption/ImageOption";
 import Button from "../Button";
 import styles from "./styles";
 
-const ImageMulitpleQuestion = ({ question, onCorrect, onWrong }) => {
+const ImageMultipleQuestion = ({ question, onCorrect, onWrong }) => {
   const [selected, setSelected] = useState(null);
   const onButtonPress = () => {
     if (selected.correct) {
@@ -36,7 +36,7 @@ const ImageMulitpleQuestion = ({ question, onCorrect, onWrong }) => {
   );
 };
 
-ImageMulitpleQuestion.propTypes = {
+ImageMultipleQuestion.propTypes = {
   question: PropTypes.shape({
     question: PropTypes.string,
     options: PropTypes.arrayOf(
@@ -50,4 +50,4 @@ ImageMulitpleQuestion.propTypes = {
   }).isRequired,
 };
 
-export default ImageMulitpleQuestion;
+export default ImageMultipleQuestion;
