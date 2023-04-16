@@ -20,7 +20,11 @@ const styles = StyleSheet.create({
     shadowRadius: 5.46,
 
     elevation: 9,
-  },
+    },
+    disabledContainer: {
+        backgroundColor: "lightgrey",
+        borderColor: "grey",
+    },
   text: {
     fontSize: 20,
     color: "#fff",
