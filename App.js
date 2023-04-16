@@ -22,12 +22,21 @@ const App = () => {
     }
   }, [currentQuestionIndex]);
 
+  const onCorrect = () => {     
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  }
+
+  const onWrong = () => {
+    Alert.alert("Wrooong!");
+   }
 
 
   return (
     <View style={styles.root}>
       <ImageMulitpleQuestion
-      question={currentQuestion}
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
       />
     </View>
   );
