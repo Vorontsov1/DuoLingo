@@ -18,7 +18,10 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
   },
-  optionText: {},
+  optionText: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
 });
 
 export default styles;

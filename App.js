@@ -6,7 +6,7 @@ import question from './assets/data/oneQuestionWithOption';
 
  
 const App = () => {
-  // const status = "ok";
+  const status = "ok";
 
   return (
     <View style={styles.root}>
