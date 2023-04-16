@@ -2,6 +2,7 @@ import React,  { useState } from 'react';
 import {  Text, View } from 'react-native';
 import styles from './App.styles';
 import ImageOption from './src/components/ImageOption/ImageOption';
+import Button from './src/components/Button';
 import question from './assets/data/oneQuestionWithOption';
 
  
@@ -23,6 +24,7 @@ const App = () => {
           />
         ))}
       </View>
+      <Button />
     </View>
   );
 }
