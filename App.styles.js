@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 10,
   },
-  title: {
+    title: {
+      marginTop: 20,
     fontSize: 20,
     fontWeight: "bold",
     alignSelf: "stretch",
@@ -21,24 +22,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignContent: "space-between",
   },
-  optionContainer: {
-    // border
-    borderWidth: 3,
-    borderBottomWidth: 4,
-    borderColor: "gray",
-    borderRadius: 15,
-    // size
-    width: "48%",
-      height: "48%",
-    // spasing
-      padding: 10,
-    alignItems: "center",
-  },
-    optionImage: {
-    width: '100%',
-    flex: 1,
-  },
-  optionText: {},
 });
 
 export default styles;
