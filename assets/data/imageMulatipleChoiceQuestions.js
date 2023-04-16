@@ -6,26 +6,26 @@ export default [
         id: "option1",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/cup.png",
-        text: "la taza",
+        text: "кружка",
       },
       {
         id: "option2",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/glass.png",
-        text: "el vaso",
+        text: "стакан",
         correct: true,
       },
       {
         id: "option3",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/milk.png",
-        text: "la leche",
+        text: "молоко",
       },
       {
         id: "option4",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/coffee.png",
-        text: "el café",
+        text: "кава",
       },
     ],
   },
@@ -36,26 +36,26 @@ export default [
         id: "option4",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/coffee.png",
-        text: "el café",
+        text: "кава",
         correct: true,
       },
       {
         id: "option1",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/cup.png",
-        text: "la taza",
+        text: "кружка",
       },
       {
         id: "option3",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/milk.png",
-        text: "la leche",
+        text: "молоко",
       },
       {
         id: "option2",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/glass.png",
-        text: "el vaso",
+        text: "стакан",
       },
     ],
   },
@@ -66,25 +66,25 @@ export default [
         id: "option3",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/milk.png",
-        text: "la leche",
+        text: "молоко",
       },
       {
         id: "option2",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/glass.png",
-        text: "el vaso",
+        text: "стакан",
       },
       {
         id: "option4",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/coffee.png",
-        text: "el café",
+        text: "кава",
       },
       {
         id: "option1",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/cup.png",
-        text: "la taza",
+        text: "кружка",
         correct: true,
       },
     ],
@@ -96,26 +96,26 @@ export default [
         id: "option2",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/glass.png",
-        text: "el vaso",
+        text: "стакан",
       },
       {
         id: "option3",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/milk.png",
-        text: "la leche",
+        text: "молоко",
         correct: true,
       },
       {
         id: "option1",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/cup.png",
-        text: "la taza",
+        text: "кружка",
       },
       {
         id: "option4",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/coffee.png",
-        text: "el café",
+        text: "кава",
       },
     ],
   },
