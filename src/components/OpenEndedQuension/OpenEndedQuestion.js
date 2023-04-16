@@ -11,8 +11,15 @@ const OpenEndedQuestion = ({ question, onCorrect, onWrong }) => {
   const [input, setInput] = useState('');
 
   const onButtonPress = () => {
-    console.warn(input);
+    if (question.answer.toLowerCase().trim() === input.toLowerCase().trim()) {
+      onCorrect();
+    } else {
+      onWrong();
+    }
+    setInput('');
   };
+
+
   return (
     <>
       <Text style={styles.title}>Translate this sentence</Text>

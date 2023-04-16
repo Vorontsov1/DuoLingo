@@ -21,8 +21,7 @@ const ImageMulitpleQuestion = ({ question, onCorrect, onWrong }) => {
     <>
       <Text style={styles.title}>{question.question}</Text>
       <View style={styles.optionsContainer}>
-      
-        {question.options.map((option) => (
+        {question.options && question.options.map((option) => (
           <ImageOption
             key={option.id}
             image={option.image}
@@ -47,7 +46,7 @@ ImageMulitpleQuestion.propTypes = {
         image: PropTypes.string,
         correct: PropTypes.bool,
       })
-    ).isRequired,
+    ),
   }).isRequired,
 };
 
