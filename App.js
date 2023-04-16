@@ -1,28 +1,45 @@
-import React,  { useState } from 'react';
-import {  Text, View, Alert } from 'react-native';
-import styles from './App.styles';
-import ImageOption from './src/components/ImageOption/ImageOption';
-import Button from './src/components/Button';
-import question from './assets/data/imageMulatipleChoiceQuestions';
+import React, { useState, useEffect } from "react";
+import { Text, View, Alert } from "react-native";
+import styles from "./App.styles";
+import ImageOption from "./src/components/ImageOption/ImageOption";
+import Button from "./src/components/Button";
+import question from "./assets/data/imageMulatipleChoiceQuestions";
 
- 
 const App = () => {
   const [selected, setSelected] = useState(null);
-  const[selectedQuestion, setSelectedQuestion] = useState(question[0]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(
+    question[currentQuestionIndex]
+  );
+
+  useEffect(() => {
+    if (currentQuestionIndex >= question.length) {
+      Alert.alert("You won!");
+      setCurrentQuestionIndex(0);
+    } else {
+      setCurrentQuestion(question[currentQuestionIndex]);
+    }
+  }, [currentQuestionIndex]);
+
   const onButtonPress = () => {
     if (selected.correct) {
-      Alert.alert('Correct!');
+      // Alert.alert("Correct!");
+      // move to next question
+
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      // reset selected
+      setSelected(null);
     } else {
-      Alert.alert('Wrong!');
+      Alert.alert("Wrooong!");
     }
   };
 
   return (
     <View style={styles.root}>
-      <Text style={styles.title}>{selectedQuestion.question}</Text>
+      <Text style={styles.title}>{currentQuestion.question}</Text>
       <View style={styles.optionsContainer}>
         {/* {option.options} */}
-        {selectedQuestion.options.map((option) => (
+        {currentQuestion.options.map((option) => (
           <ImageOption
             key={option.id}
             image={option.image}
@@ -35,7 +52,5 @@ const App = () => {
       <Button text="Check" disabled={!selected} onPress={onButtonPress} />
     </View>
   );
-}
+};
 export default App;
-
-
