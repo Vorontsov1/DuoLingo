@@ -1,53 +1,69 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import { View, Text } from "react-native";
-import Button from '../Button/Button';
-import styles from './styles';
-import WordOption from '../WordOption/WordOption';
-
-
+import Button from "../Button/Button";
+import styles from "./styles";
+import WordOption from "../WordOption/WordOption";
 
 const FillinTheBlank = ({ question, onCorrect, onWrong }) => {
-    const [selected, setSelected] = React.useState(null);
+  const [selectedOptions, setSelectedOptions] = React.useState([]);
 
-    const onButtonPress = () => {
-        if (selected === question.answer) {
-            onCorrect();
-           
-        } else {
-            onWrong();
-        }
-           setSelected();  
+  const onButtonPress = () => { 
+    // console.log("selected:", selected);
+    // console.log("question.answer:", question.answer);
+    // console.log("comparison result:", selected === question.answer);
+
+    // if (selected === question.answer) {
+    //   onCorrect();
+    // } else {
+    //   onWrong();
+    // }
+    // setSelected(null);
+  };
+
+    const addOptionsToSelected = (option) => {
+setSelectedOptions([...selectedOptions, option]);
     }
-
+    
   return (
     <>
       <Text style={styles.title}>Complete the sentence</Text>
       <View style={styles.row}>
-              <Text style={styles.text}>{question.text}</Text>
-        <View style={styles.blank}>
-          {selected && (
-            <WordOption
-              text={selected}
-              onPress={() => setSelected(null)}
-              key={selected}
-            />
-          )}
-        </View>
+        {question.parts.map((part) => {
+          if (part.isBlank) {
+            return (
+              <View style={styles.blank}>
+                {/* {selected && (
+                  <WordOption
+                    text={selected}
+                    onPress={() => addOptionsToSelected(null)}
+                    key={selected}
+                  />
+                )} */}
+              </View>
+            );
+          } else {
+            return <Text style={styles.text}>{part.text}</Text>;
+          }
+        })}
       </View>
       <View style={styles.optionsContainer}>
         {question.options.map((option, index) => (
           <WordOption
             text={option}
-            isSelected={selected === option}
-            onPress={() => setSelected(option)}
+            isSelected={selectedOptions.includes(option)}
+            onPress={() => addOptionsToSelected(option)}
             key={index}
           />
         ))}
       </View>
 
-      <Button text="Check" onPress={onButtonPress} disabled={!selected} />
+      <Button
+        text="Check"
+        onPress={onButtonPress}
+        disabled={!selectedOptions.length}
+      />
     </>
   );
-}
+};
 
 export default FillinTheBlank;
