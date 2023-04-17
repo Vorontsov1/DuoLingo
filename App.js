@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Alert } from "react-native";
+import { View, Alert, ActivityIndicator } from "react-native";
 import styles from "./App.styles";
 import Header from "./src/components/Header/Header";
 import ImageMultipleQuestion from "./src/components/ImageMultipleQuestion/ImageMultipleQuestion";
@@ -19,7 +19,9 @@ const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(
     question[currentQuestionIndex]
   );
-const [lives, setLives] = useState(5);
+  const [lives, setLives] = useState(5);
+  const [hasLoaded, setHasLoaded] = useState(false);
+
   useEffect(() => {
     if (currentQuestionIndex >= question.length) {
       Alert.alert("You won!");
@@ -33,9 +35,11 @@ const [lives, setLives] = useState(5);
     loadData();
   }, []);
 
-    useEffect(() => {
+  useEffect(() => {
+     if (hasLoaded) {
       saveData();
-    }, [lives, currentQuestionIndex]);
+     }
+    }, [lives, currentQuestionIndex,  hasLoaded]);
 
   const onCorrect = () => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -75,6 +79,13 @@ const [lives, setLives] = useState(5);
     if (currentQuestionIndex) {
       setCurrentQuestionIndex(parseInt(currentQuestionIndex));
     }
+    setHasLoaded(true);
+  };
+
+
+
+  if (!hasLoaded) { 
+    <ActivityIndicator size="large" color="#0000ff" />
   }
    
 
