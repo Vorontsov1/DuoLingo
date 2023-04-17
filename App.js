@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, Alert } from "react-native";
+import { View, Alert } from "react-native";
 import styles from "./App.styles";
+import Header from "./src/components/Header/Header";
 import ImageMultipleQuestion from "./src/components/ImageMultipleQuestion/ImageMultipleQuestion";
 import OpenEndedQuestion from "./src/components/OpenEndedQuestion/OpenEndedQuestion";
-import ImageOption from "./src/components/ImageOption/ImageOption";
-import Button from "./src/components/Button";
-// import question from "./assets/data/imageMultipleQuestions";
-// import question from "./assets/data/openEndedQuestions";
+
 import question from './assets/data/allQuestions';
+
 
 
 
@@ -37,6 +36,8 @@ const App = () => {
 
   return (
     <View style={styles.root}>
+      <Header progress={currentQuestionIndex / question.length} />
+      
       {currentQuestion.type === "IMAGE_MULTIPLE_CHOICE" && (
         <ImageMultipleQuestion
           question={currentQuestion}
