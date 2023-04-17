@@ -3,8 +3,16 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 const WordOption = ({text, onPress,  isSelected}) => {
   return (
-    <Pressable onPress={onPress} style={[styles.root, isSelected && {borderColor: 'lightgrey'}]} >
-      <Text style={styles.text}>{text}</Text>
+    <Pressable
+      onPress={onPress}
+      style={[
+        styles.root,
+        { backgroundColor: isSelected ? "lightgrey" : "white" },
+      ]}
+    >
+      <Text style={[styles.text, { color: isSelected ? "grey" : "black" }]}>
+        {text}
+      </Text>
     </Pressable>
   );
 }

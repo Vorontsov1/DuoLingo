@@ -6,23 +6,30 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "stretch",
   },
-    row: {
-        flexDirection: "row",
-        alignSelf: 'flex-start',
-        marginVertical: 10,
+  row: {
+    flexDirection: "row",
+    alignSelf: "flex-start",
+    marginVertical: 10,
+    marginHorizontal: 10,
+    height: 70,
+    justifyContent: "center",
   },
-    blank: {
-        borderBottomWidth: 2,
-        borderColor: "lightgrey",
-        width: 100,
+  text: {
+    alignSelf: "flex-end",
+    fontSize: 20,
   },
-    optionsContainer: {
-        flex: 1,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        alignContent: "center",
-        flexWrap: "wrap",
+  blank: {
+    borderBottomWidth: 2,
+    borderColor: "lightgrey",
+    width: 100,
+  },
+  optionsContainer: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
+    flexWrap: "wrap",
   },
 });
 
