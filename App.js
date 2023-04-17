@@ -6,6 +6,9 @@ import ImageMultipleQuestion from "./src/components/ImageMultipleQuestion/ImageM
 import OpenEndedQuestion from "./src/components/OpenEndedQuestion/OpenEndedQuestion";
 
 import question from './assets/data/allQuestions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 
 
@@ -25,6 +28,14 @@ const [lives, setLives] = useState(5);
       setCurrentQuestion(question[currentQuestionIndex]);
     }
   }, [currentQuestionIndex]);
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+    useEffect(() => {
+      saveData();
+    }, [lives, currentQuestionIndex]);
 
   const onCorrect = () => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -46,9 +57,26 @@ const [lives, setLives] = useState(5);
         }
       ]);
     } else {
-    setLives(lives - 1);
+      setLives(lives - 1);
     }
   };
+
+  const saveData = async () => { 
+    await AsyncStorage.setItem('lives', lives.toString());
+    await AsyncStorage.setItem("currentQuestionIndex", currentQuestionIndex.toString());
+  }
+
+  const loadData = async () => {
+    const loadedLives = await AsyncStorage.getItem('lives');
+    if (loadedLives) {
+      setLives(parseInt(loadedLives));
+    }
+    const currentQuestionIndex = await AsyncStorage.getItem('currentQuestionIndex');
+    if (currentQuestionIndex) {
+      setCurrentQuestionIndex(parseInt(currentQuestionIndex));
+    }
+  }
+   
 
   return (
     <View style={styles.root}>
