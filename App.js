@@ -5,7 +5,7 @@ import ImageMultipleQuestion from "./src/components/ImageMultipleQuestion/ImageM
 import OpenEndedQuestion from "./src/components/OpenEndedQuestion/OpenEndedQuestion";
 import ImageOption from "./src/components/ImageOption/ImageOption";
 import Button from "./src/components/Button";
-// import question from "./assets/data/imageMulatipleChoiceQuestions";
+// import question from "./assets/data/imageMultipleQuestions";
 // import question from "./assets/data/openEndedQuestions";
 import question from './assets/data/allQuestions';
 
@@ -13,7 +13,6 @@ import question from './assets/data/allQuestions';
 
 
 const App = () => {
-  
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(
     question[currentQuestionIndex]
@@ -28,28 +27,30 @@ const App = () => {
     }
   }, [currentQuestionIndex]);
 
-  const onCorrect = () => {     
+  const onCorrect = () => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
-  }
+  };
 
   const onWrong = () => {
     Alert.alert("Wrooong!");
-   }
-
+  };
 
   return (
     <View style={styles.root}>
-      <ImageMultipleQuestion
-        question={currentQuestion}
-        onCorrect={onCorrect}
-        onWrong={onWrong}
-      />
-
-      <OpenEndedQuestion
-        question={currentQuestion}
-        onCorrect={onCorrect}
-        onWrong={onWrong}
-      />
+      {currentQuestion.type === "IMAGE_MULTIPLE_CHOICE" && (
+        <ImageMultipleQuestion
+          question={currentQuestion}
+          onCorrect={onCorrect}
+          onWrong={onWrong}
+        />
+      )}
+      {currentQuestion.type === "OPEN_ENDED" && (
+        <OpenEndedQuestion
+          question={currentQuestion}
+          onCorrect={onCorrect}
+          onWrong={onWrong}
+        />
+      )}
     </View>
   );
 };
