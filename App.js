@@ -5,14 +5,9 @@ import Header from "./src/components/Header/Header";
 import ImageMultipleQuestion from "./src/components/ImageMultipleQuestion/ImageMultipleQuestion";
 import OpenEndedQuestion from "./src/components/OpenEndedQuestion/OpenEndedQuestion";
 
-import question from './assets/data/allQuestions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-
-
-
-
+import question from "./assets/data/allQuestions";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import FillinTheBlank from "./src/components/FillinTheBlank/FillinTheBlank";
 
 const App = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -36,64 +31,73 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-     if (hasLoaded) {
+    if (hasLoaded) {
       saveData();
-     }
-    }, [lives, currentQuestionIndex,  hasLoaded]);
+    }
+  }, [lives, currentQuestionIndex, hasLoaded]);
 
   const onCorrect = () => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
-  const restart = () => { 
+  const restart = () => {
     setLives(5);
     setCurrentQuestionIndex(0);
-  }
+  };
 
   const onWrong = () => {
     Alert.alert("Wrooong!");
     if (lives < 1) {
-      Alert.alert("Game over!", 'Try again', [
+      Alert.alert("Game over!", "Try again", [
         {
-          text: 'Try again',
+          text: "Try again",
           onPress: restart,
-          style: 'default'
-        }
+          style: "default",
+        },
       ]);
     } else {
       setLives(lives - 1);
     }
   };
 
-  const saveData = async () => { 
-    await AsyncStorage.setItem('lives', lives.toString());
-    await AsyncStorage.setItem("currentQuestionIndex", currentQuestionIndex.toString());
-  }
+  const saveData = async () => {
+    await AsyncStorage.setItem("lives", lives.toString());
+    await AsyncStorage.setItem(
+      "currentQuestionIndex",
+      currentQuestionIndex.toString()
+    );
+  };
 
   const loadData = async () => {
-    const loadedLives = await AsyncStorage.getItem('lives');
+    const loadedLives = await AsyncStorage.getItem("lives");
     if (loadedLives) {
       setLives(parseInt(loadedLives));
     }
-    const currentQuestionIndex = await AsyncStorage.getItem('currentQuestionIndex');
+    const currentQuestionIndex = await AsyncStorage.getItem(
+      "currentQuestionIndex"
+    );
     if (currentQuestionIndex) {
-      setCurrentQuestionIndex(parseInt(currentQuestionIndex));
+      setCurrentQuestionIndex(0);
+    // setCurrentQuestionIndex(parseInt(currentQuestionIndex)); 
     }
     setHasLoaded(true);
   };
 
-
-
-  if (!hasLoaded) { 
-    <ActivityIndicator size="large" color="#0000ff" />
+  if (!hasLoaded) {
+    <ActivityIndicator size="large" color="#0000ff" />;
   }
-   
 
   return (
     <View style={styles.root}>
-      <Header progress={currentQuestionIndex / question.length}
-      lives={lives}/>
-      
+      <Header progress={currentQuestionIndex / question.length} lives={lives} />
+
+      {currentQuestion.type === "FILL_IN_THE_BLANK" && (
+        <FillinTheBlank
+          question={currentQuestion}
+          onCorrect={onCorrect}
+          onWrong={onWrong}
+        />
+      )}
       {currentQuestion.type === "IMAGE_MULTIPLE_CHOICE" && (
         <ImageMultipleQuestion
           question={currentQuestion}
