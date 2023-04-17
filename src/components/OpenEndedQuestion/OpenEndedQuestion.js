@@ -33,7 +33,7 @@ const OpenEndedQuestion = ({ question, onCorrect, onWrong }) => {
     <>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView
-          // style={styles.keyboardAvoidingView}
+          style={styles.keyboardAvoidingView}
           behavior={Platform.OS === "ios" ? "padding" : "height"}
         >
           <Text style={styles.title}>Translate this sentence</Text>

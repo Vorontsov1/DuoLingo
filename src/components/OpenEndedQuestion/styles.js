@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
+    width: 390,
     backgroundColor: "lightgrey",
     flex: 1,
     borderWidth: 1,
@@ -45,10 +46,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     
   },
-  // keyboardAvoidingView: {
-  //   flex: 1,
-  //   paddingTop: Platform.OS === "ios" ? 20 : 0,
-  // },
+  keyboardAvoidingView: {
+    flex: 1,
+    paddingTop: Platform.OS === "ios" ? 20 : 0,
+  },
 });
 
 export default styles;
