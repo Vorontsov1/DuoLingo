@@ -42,11 +42,13 @@ const styles = StyleSheet.create({
     padding: 10,
     alignSelf: "stretch",
     fontSize: 18,
+    fontWeight: "bold",
+    
   },
-  keyboardAvoidingView: {
-    flex: 1,
-    paddingTop: Platform.OS === "ios" ? 20 : 0,
-  },
+  // keyboardAvoidingView: {
+  //   flex: 1,
+  //   paddingTop: Platform.OS === "ios" ? 20 : 0,
+  // },
 });
 
 export default styles;
