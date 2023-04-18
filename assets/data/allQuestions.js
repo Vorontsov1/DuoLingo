@@ -20,7 +20,7 @@ export default [
         // isBlank: true,
       },
     ],
-    options: ["la", "el", "nina", "nino", "ella"],
+    options: ["la", "el", "mujer", "ella"],
   },
 
   {

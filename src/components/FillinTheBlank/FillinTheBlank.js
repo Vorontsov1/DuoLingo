@@ -4,41 +4,70 @@ import Button from "../Button/Button";
 import styles from "./styles";
 import WordOption from "../WordOption/WordOption";
 
-const FillinTheBlank = ({ question, onCorrect, onWrong }) => {
-  const [selectedOptions, setSelectedOptions] = React.useState([]);
+const FillInTheBlank = ({ question, onCorrect, onWrong }) => {
+  const [parts, setParts] = useState(question.parts);
 
-  const onButtonPress = () => { 
-    // console.log("selected:", selected);
-    // console.log("question.answer:", question.answer);
-    // console.log("comparison result:", selected === question.answer);
-
-    // if (selected === question.answer) {
-    //   onCorrect();
-    // } else {
-    //   onWrong();
-    // }
-    // setSelected(null);
+  const onButtonPress = () => {
+    if (checkIfCorrect()) {
+      onCorrect();
+    } else {
+      onWrong();
+    }
   };
 
-    const addOptionsToSelected = (option) => {
-setSelectedOptions([...selectedOptions, option]);
+  const checkIfCorrect = () => {
+    return (
+      parts.filter((part) => part.isBlank && part.selected !== part.text)
+        .length === 0
+    );
+  };
+
+  const addOptionToSelected = (option) => {
+    if (isSelected(option)) {
+      return;
     }
-    
+
+    const newParts = [...parts];
+    for (let i = 0; i < newParts.length; i++) {
+      if (newParts[i].isBlank && !newParts[i].selected) {
+        newParts[i].selected = option;
+        break;
+      }
+    }
+    setParts(newParts);
+  };
+
+  const removeSelectedAt = (index) => {
+    const newParts = [...parts];
+    newParts[index].selected = null;
+    setParts(newParts);
+  };
+
+  const isSelected = (option) => {
+    return (
+      parts.filter((part) => part.isBlank && part.selected === option).length >
+      0
+    );
+  };
+
+  const isReadyToCheck = () => {
+    return parts.filter((part) => part.isBlank && !part.selected).length > 0;
+  };
+
   return (
     <>
       <Text style={styles.title}>Complete the sentence</Text>
       <View style={styles.row}>
-        {question.parts.map((part) => {
+        {parts.map((part, index) => {
           if (part.isBlank) {
             return (
               <View style={styles.blank}>
-                {/* {selected && (
+                {part.selected && (
                   <WordOption
-                    text={selected}
-                    onPress={() => addOptionsToSelected(null)}
-                    key={selected}
+                    text={part.selected}
+                    onPress={() => removeSelectedAt(index)}
                   />
-                )} */}
+                )}
               </View>
             );
           } else {
@@ -46,13 +75,13 @@ setSelectedOptions([...selectedOptions, option]);
           }
         })}
       </View>
+
       <View style={styles.optionsContainer}>
-        {question.options.map((option, index) => (
+        {question.options.map((option) => (
           <WordOption
             text={option}
-            isSelected={selectedOptions.includes(option)}
-            onPress={() => addOptionsToSelected(option)}
-            key={index}
+            isSelected={isSelected(option)}
+            onPress={() => addOptionToSelected(option)}
           />
         ))}
       </View>
@@ -60,10 +89,10 @@ setSelectedOptions([...selectedOptions, option]);
       <Button
         text="Check"
         onPress={onButtonPress}
-        disabled={!selectedOptions.length}
+        disabled={isReadyToCheck()}
       />
     </>
   );
 };
 
-export default FillinTheBlank;
+export default FillInTheBlank;
